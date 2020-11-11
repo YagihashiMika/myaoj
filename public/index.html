@@ -5,6 +5,41 @@
         <title>プログラミング課題2020</title>
     </head>
      <body>
-        <script src="main.js"></script>
+        <div className="App">
+            <header>
+                <h1>プログラミング課題2020</h1>
+                <p>Selected by Kimio Kuramitsu</p>
+            </header>
+            <div class="AOJ">
+                <nav>
+                    <li><a href="#AOJに慣れよう">AOJに慣れよう</a></li>
+                    <li><a href="#入力と出力をマスターしよう">入力と出力をマスターしよう</a></li>
+                    <li><a href="#繰り返し">繰り返し</a></li>
+                    <li><a href="#繰り返しと関数">繰り返しと関数</a></li>
+                    <li><a href="#リスト">リスト</a></li>
+                    <li><a href="#文字と文字列">文字と文字列</a></li>
+                    <li><a href="#いよいよITP入門からの卒業">いよいよITP入門からの卒業</a></li>
+                    <li><a href="#整数と数値計算">整数と数値計算</a></li>
+                    <li><a href="#文字列に慣れよう">文字列に慣れよう</a></li>
+                    <li><a href="#プログラミング・コンテスト A問題">プログラミング・コンテスト A問題</a></li>
+                    <li><a href="#シミュレーション">シミュレーション</a></li>
+                    <li><a href="#文字列の復習">文字列の復習</a></li>
+                    <li><a href="#探索問題">探索問題</a></li>
+                    <li><a href="#アルゴリズム">アルゴリズム</a></li>
+                    <li><a href="#上級アルゴリズム">上級アルゴリズム</a></li>
+                  </nav>
+                  <div class="main">
+                    <div class="check-form">
+                      <label class="nice-label" For="Username">User ID</label>
+                      <input class="nice-textbox" type="text" value="User ID" />
+                      <button onClick={this.handleClick}>CHECK</button>
+                      <span id='score'>{this.score}</span>
+                    </div>
+                    <div id="solvedList">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/main.js"></script>
     </body>
 </html>
