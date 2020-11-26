@@ -191,18 +191,187 @@ const Problems = [
   { id: '1156', title: 'ちょろちょろロボット', cite: '	国内予選2008D' },
 ]
 
-//問題リストを表示
-key = 0;
-var titleList = '';
+const ACCEPTED = 4;
+const PRESENTATIONERROR = 8;
 
-for (const p of Problems){
-  if(!p.id){
-    titleList += `<h2 id="${p.title}">${p.title}</h2>`;
+const GREEN = '#b3d3ac';
+const YELLOW = '#f9e697';
+const RED = '#e2b2c0';
+
+const StatusIcons = ['😭', '😡', '😱', '😱', '🍺', '⚡️', '⚡️', '😨', '😓', '⚡️',]
+
+function colors(status, prev){
+  if (status === ACCEPTED || prev === GREEN) {
+    return GREEN;
+  }
+  if (status === PRESENTATIONERROR || prev === YELLOW) {
+    return YELLOW;
+  }
+  return RED;
+}
+
+function records (status, prev= '') {
+  return StatusIcons[status] + prev;
+}
+
+function uname (){
+  return sessionStorage.getItem('aoj_uname') || '';
+}
+
+var pdb = {};
+
+//check関数
+function check(data) {
+  pdb = {};
+  const dd = [];
+  var submit = 0;
+  var prevId = '';
+  for (const d of data){
+    if (d.language !== 'Python3') { //言語がPython3でなかったら飛ばす
+      continue;
+    }
+    if (d.submissionDate < 1587915078539) { //日付が1587915078539より前だったら飛ばす
+      continue;
+    }
+    if (d.status !== 4 && !d.accuracy.startsWith('0')) { //statusが4以外、かつaccuracyが0から始まってたらd.statusをPEにする
+      d.status = PRESENTATIONERROR;
+    }
+    dd.push({//dd配列に下記のオブジェクトを格納していく
+      'key': d.judgeId,
+      'problemId': d.problemId,
+      'time': d.submissionDate,
+      'status': d.status,
+      'message': `${d.problemId} ${new Date(d.submissionDate)}`
+    })
+    solved(d);//pdbオブジェクトを作っていく
+    if (prevId !== d.problemId) {//前のデータと今のデータのIDが違かったらsubmitをプラスしていく
+      submit += 1;
+    }
+    prevId = d.problemId;//prevIdを更新する
+  }
+  checkList();
+}
+
+//solved関数
+function solved(d){
+  if (d.problemId in pdb) { //pdbオブジェクトにd.problemIdがあったら、更新していく
+    const entry = pdb[d.problemId];
+    entry.color = colors(d.status, entry.color);
+    entry.record = records(d.status, entry.record);
   } else {
-    key += 1;
-    const url = `http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=${p.id}&lang=jp`;
-    titleList += `<a href=${url}><p>(${key}) ${p.title}</p></a>`;
+    const entry = { //なかったらentryオブジェクトを定義し、pdbオブジェクトに格納
+      problemId: d.problemId,
+      color: colors(d.status),
+      record: records(d.status),
+      date: new Date(d.submissionDate / 1000),
+    }
+    pdb[d.problemId] = entry;
   }
 }
 
-document.getElementById('solvedList').innerHTML = titleList;
+function checkList(){
+  var titleList = '';
+  var count = 1;
+  const item = {};
+  const ps = [];
+  for (const p of Problems){
+    if(!p.id){
+
+      titleList += `<h2 id="${p.title}">${p.title}</h2>`;
+    }else {
+      const url = `http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=${p.id}&lang=jp`;
+      item.key = p.id;
+      item.title = `(${count}) ${p.title}`;
+      item.color = 'white';
+      item.record = p.hint || '';
+      if (p.id in pdb) {
+        const entry = pdb[p.id];
+        item.color = entry.color;
+        item.record = entry.record;
+      }
+      titleList += `
+        <div style="background: ${item.color}">
+          <p><a href=${url}>(${count}) ${p.title}</a><span>${item.record}</span></p>
+        </div>
+        `;
+      count += 1;
+    }
+  }
+  document.getElementById('solvedList').innerHTML = titleList;
+}
+
+//問題リストを表示
+function solvedList(){
+  var titleList = '';
+  var count = 1;
+  const ps = [];
+  for (const p of Problems){
+    if(!p.id){
+      titleList += `<h2 id="${p.title}">${p.title}</h2>`;
+    }else {
+      const url = `http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=${p.id}&lang=jp`;
+      const item = {
+        key: p.id,
+        title: `(${count}) ${p.title}`,
+        color: 'white',
+        record: p.hint || '',
+      }
+      titleList += `
+        <div style="background: ${item.color}">
+          <p><a href=${url}>(${count}) ${p.title}</a><span>${item.record}</span></p>
+        </div>
+        `;
+      count += 1;
+    }
+  }
+  document.getElementById('solvedList').innerHTML = titleList;
+}
+
+window.onload = solvedList();
+
+
+
+var userID;
+
+//inputタグに入力した値を格納
+function handleOnChange(){
+  userID = document.getElementById("inputID").value;
+}
+
+document.getElementById("inputID").onchange = handleOnChange;
+
+//XMLHttpRequestを生成する
+function createXMLHttpRequest() {
+  if (window.XMLHttpRequest) {
+    return new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    try {
+      return new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+      try {
+        return new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (e2) {
+        return null;
+      }
+    }
+  } else {
+    return null;
+  }
+}
+
+//UserのページにGETリクエストを送り、checkして別の画面を返す
+function handleClick(){
+  var url = `https://judgeapi.u-aizu.ac.jp/submission_records/users/${userID}?size=2000`;
+  var request = createXMLHttpRequest();
+  request.open("GET", url, false);
+  request.send("");
+  if (request.readyState == 4 && request.status == 200){
+    data = JSON.parse(request.response);
+    check(data);
+  }else{
+    alert('err');
+  }
+}
+
+document.getElementById("checkButton").onclick = handleClick;
+

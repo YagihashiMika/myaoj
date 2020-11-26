@@ -1,0 +1,152 @@
+header {
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    background-color: #00657f;
+    color: #fff;
+    letter-spacing: 1px;
+    position: fixed;
+    z-index: 10;
+}
+
+header h1{
+    float: left;
+    margin: 0 20px;
+    font-size: 30px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+header p{
+    font-size: 13px;
+    font-family: 'Yantramanav', sans-serif;
+}
+
+.AOJ{
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.AOJ nav{
+    width: 20%;
+    float: left;
+    top: 100px;
+    position: fixed;
+}
+
+.AOJ #title{
+    list-style: none;
+    margin: 20px;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.AOJ #title li a{
+    text-decoration: none;
+    color: #000;
+}
+
+.AOJ #title li a:hover{
+    text-decoration: none;
+    color: #ccc;
+}
+
+.AOJ img{
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.AOJ #colors{
+    margin: 20px 0;
+}
+
+.AOJ #colors li{
+    clear: both;
+    height: 20px;
+    margin: 5px 20px;
+    line-height: 20px;
+    font-size: 13px;
+}
+
+.AOJ #records{
+    margin: 20px 0;
+}
+
+.AOJ #records li{
+    clear: both;
+    height: 20px;
+    margin: 5px 20px;
+    line-height: 20px;
+    font-size: 13px;
+}
+
+
+#inputID{
+    font-size: 17px;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 40px 0 20px 0;
+    height: 40px;
+    width: 13em;
+    transition: all .6s ease;
+    border-bottom:0.5px solid #000;
+    border-right:none;
+    border-left:none;
+    border-top:none;
+    line-height: 40px;
+}
+
+#inputID:focus{
+    width:16em;
+    outline: none;
+}
+
+#checkButton{
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 50px;
+    border: none;
+    outline: none;
+    border-radius:30px;
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #eee;
+}
+
+#checkButton:hover{
+    background-color: #ccc;
+}
+
+.AOJ .main{
+    width: 75%;
+    float: left;
+    margin: 100px 5% 0 20%;
+}
+
+h2{
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 4.0;
+
+}
+
+#solvedList p{
+    width: 100%;
+    font-size: 15px;
+    line-height: 2.6;
+    border-bottom: 1px dotted #000;
+}
+
+#solvedList a{
+    text-decoration: none;
+    color: #000;
+}
+
+#solvedList a:hover{
+    color: #ccc;
+}
+
+#solvedList span{
+    float: right;
+}

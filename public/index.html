@@ -3,37 +3,61 @@
     <head>
         <meta charset="UTF-8">
         <title>プログラミング課題2020</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@100&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
     </head>
      <body>
-        <div className="App">
+        <div class="App">
             <header>
-                <h1>プログラミング課題2020</h1>
+                <h1>PROGRAMMING 2020</h1>
                 <p>Selected by Kimio Kuramitsu</p>
             </header>
             <div class="AOJ">
                 <nav>
-                    <li><a href="#AOJに慣れよう">AOJに慣れよう</a></li>
-                    <li><a href="#入力と出力をマスターしよう">入力と出力をマスターしよう</a></li>
-                    <li><a href="#繰り返し">繰り返し</a></li>
-                    <li><a href="#繰り返しと関数">繰り返しと関数</a></li>
-                    <li><a href="#リスト">リスト</a></li>
-                    <li><a href="#文字と文字列">文字と文字列</a></li>
-                    <li><a href="#いよいよITP入門からの卒業">いよいよITP入門からの卒業</a></li>
-                    <li><a href="#整数と数値計算">整数と数値計算</a></li>
-                    <li><a href="#文字列に慣れよう">文字列に慣れよう</a></li>
-                    <li><a href="#プログラミング・コンテスト A問題">プログラミング・コンテスト A問題</a></li>
-                    <li><a href="#シミュレーション">シミュレーション</a></li>
-                    <li><a href="#文字列の復習">文字列の復習</a></li>
-                    <li><a href="#探索問題">探索問題</a></li>
-                    <li><a href="#アルゴリズム">アルゴリズム</a></li>
-                    <li><a href="#上級アルゴリズム">上級アルゴリズム</a></li>
+                    <ul id="title">
+                        <li><a href="#AOJに慣れよう">AOJに慣れよう</a></li>
+                        <li><a href="#入力と出力をマスターしよう">入力と出力をマスターしよう</a></li>
+                        <li><a href="#繰り返し">繰り返し</a></li>
+                        <li><a href="#繰り返しと関数">繰り返しと関数</a></li>
+                        <li><a href="#リスト">リスト</a></li>
+                        <li><a href="#文字と文字列">文字と文字列</a></li>
+                        <li><a href="#いよいよITP入門からの卒業">いよいよITP入門からの卒業</a></li>
+                        <li><a href="#整数と数値計算">整数と数値計算</a></li>
+                        <li><a href="#文字列に慣れよう">文字列に慣れよう</a></li>
+                        <li><a href="#プログラミング・コンテスト A問題">プログラミング・コンテスト A問題</a></li>
+                        <li><a href="#シミュレーション">シミュレーション</a></li>
+                        <li><a href="#文字列の復習">文字列の復習</a></li>
+                        <li><a href="#探索問題">探索問題</a></li>
+                        <li><a href="#アルゴリズム">アルゴリズム</a></li>
+                        <li><a href="#上級アルゴリズム">上級アルゴリズム</a></li>
+                    </ul>
+                    <ul id="colors">
+                        <li><img src="images/green@3x.png">Accepted</li>
+                        <li><img src="images/yellow@3x.png">Presentation Error</li>
+                        <li><img src="images/red@3x.png">Others</li>
+                    </ul>
+                    <ul id="records">
+                        <li><img src="images/ac@3x.png">Accepted</li>
+                        <li><img src="images/pe@3x.png">Presentation Error</li>
+                        <li><img src="images/ce@3x.png">Compile Error</li>
+                        <li><img src="images/wa@3x.png">Wrong Answer</li>
+                        <li><img src="images/tl@3x.png">Time Limit</li>
+                        <li><img src="images/ml@3x.png">Memory Limit</li>
+                        <li><img src="images/w@3x.png">Waiting</li>
+                        <li><img src="images/ol@3x.png">Output Limit</li>
+                        <li><img src="images/re@3x.png">Runtime Error</li>
+                        <li><img src="images/r@3x.png">Running</li>
+                    </ul>
+
                   </nav>
                   <div class="main">
                     <div class="check-form">
-                      <label class="nice-label" For="Username">User ID</label>
-                      <input class="nice-textbox" type="text" value="User ID" />
-                      <button onClick={this.handleClick}>CHECK</button>
-                      <span id='score'>{this.score}</span>
+                      <input id="inputID" type="text" value="User ID"/>
+                      <input id="checkButton" type="button" value="CHECK"/>
                     </div>
                     <div id="solvedList">
                     </div>
