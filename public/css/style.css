@@ -150,3 +150,7 @@ h2{
 #solvedList span{
     float: right;
 }
+
+#solvedList img{
+    margin: 10px 5px;
+}

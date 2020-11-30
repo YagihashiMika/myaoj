@@ -198,7 +198,18 @@ const GREEN = '#b3d3ac';
 const YELLOW = '#f9e697';
 const RED = '#e2b2c0';
 
-const StatusIcons = ['😭', '😡', '😱', '😱', '🍺', '⚡️', '⚡️', '😨', '😓', '⚡️',]
+const StatusIcons = [
+  '<img src="images/ce@3x.png">',
+  '<img src="images/wa@3x.png">', 
+  '<img src="images/tl@3x.png">', 
+  '<img src="images/ml@3x.png">', 
+  '<img src="images/ac@3x.png">', 
+  '<img src="images/w@3x.png">', 
+  '<img src="images/ol@3x.png">', 
+  '<img src="images/re@3x.png">', 
+  '<img src="images/pe@3x.png">', 
+  '<img src="images/sr@3x.png">',
+]
 
 function colors(status, prev){
   if (status === ACCEPTED || prev === GREEN) {
