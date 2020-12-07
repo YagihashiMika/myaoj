@@ -114,7 +114,7 @@ const Problems = [
   { id: '0064', title: '秘密の番号', cite: 'PCK2004', hint: '正規表現を試してみると' },
   { id: '0025', title: 'Hit and Blow', cite: '(PCK 2003)' },
 
-  { title: 'プログラミング・コンテスト A問題' },
+  { title: 'プログラミング・コンテストA問題' },
   { id: '1153', title: '等しい合計点', cite: '	国内予選2008A' },
   { id: '2197', title: '連続する整数の和', cite: '	模擬国内2010A' },
   { id: '1192', title: '税率変更 (☆)', cite: '	国内予選2014A' },
@@ -194,9 +194,9 @@ const Problems = [
 const ACCEPTED = 4;
 const PRESENTATIONERROR = 8;
 
-const GREEN = '#b3d3ac';
-const YELLOW = '#f9e697';
-const RED = '#e2b2c0';
+const GREEN = '#72af68';
+const YELLOW = '#f9e169';
+const RED = '#f48876';
 
 const StatusIcons = [
   '<img src="images/ce@3x.png">',

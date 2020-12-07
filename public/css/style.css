@@ -49,6 +49,11 @@ header p{
     color: #ccc;
 }
 
+.AOJ .inner{
+    padding-top: 100px;
+    margin-top:-100px;
+}
+
 .AOJ img{
     float: left;
     width: 20px;
@@ -62,9 +67,9 @@ header p{
 
 .AOJ #colors li{
     clear: both;
-    height: 20px;
+    height: 25px;
     margin: 5px 20px;
-    line-height: 20px;
+    line-height: 25px;
     font-size: 13px;
 }
 
@@ -74,9 +79,9 @@ header p{
 
 .AOJ #records li{
     clear: both;
-    height: 20px;
+    height: 25px;
     margin: 5px 20px;
-    line-height: 20px;
+    line-height: 25px;
     font-size: 13px;
 }
 
@@ -153,4 +158,107 @@ h2{
 
 #solvedList img{
     margin: 10px 5px;
+}
+
+@media screen and (max-width: 1300px){
+    .AOJ nav{
+        width: 25%;
+    }
+
+    .AOJ .main{
+        width: 70%;
+        margin: 100px 5% 0 25%;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .AOJ nav{
+        width: 30%;
+    }
+
+    .AOJ .main{
+        width: 65%;
+        margin: 100px 5% 0 30%;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    header{
+        text-align: center;
+    }
+
+    header h1{
+        float: none;
+        line-height: 30px;
+        margin: 25px 0 0 0;
+        font-size: 28px;
+        
+    }
+
+    header p{
+        line-height: 30px;
+    }
+
+    .AOJ nav{
+        position: fixed;
+        top: 100;
+        left: -40%;
+        width: 40%;
+        height: 100vh;
+        background: #ffffff;
+        transition: .7s;
+    }
+
+    .AOJ .main{
+        width: 90%;
+        margin: 100px 5% 0 5%;
+    }
+
+    #hamburger {
+        display: block;
+        position: absolute;
+        top: 40px;
+        left: 30px;
+        width: 50px;
+        height: 44px;
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    .inner_line {
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background-color: #ffffff;
+        transition: 1s;
+        border-radius: 4px;
+    }
+
+    #line1 {
+        top: 0px;
+    }
+    #line2 {
+        top: 10px;
+    }
+    #line3 {
+        top: 20px;
+    }
+
+    .in{
+        transform: translateX(100%);
+    }
+
+    .line_1 {
+        transform: translateY(10px) rotate(-45deg);
+        top: 0;
+    }
+    .line_2 {
+        opacity: 0;
+    }
+    .line_3 {
+        transform: translateY(-10px)rotate(45deg);
+        bottom: 0;
+    }
 }
