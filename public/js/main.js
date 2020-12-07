@@ -238,39 +238,39 @@ function check(data) {
   var submit = 0;
   var prevId = '';
   for (const d of data){
-    if (d.language !== 'Python3') { //言語がPython3でなかったら飛ばす
+    if (d.language !== 'Python3') {
       continue;
     }
-    if (d.submissionDate < 1587915078539) { //日付が1587915078539より前だったら飛ばす
+    if (d.submissionDate < 1587915078539) {
       continue;
     }
-    if (d.status !== 4 && !d.accuracy.startsWith('0')) { //statusが4以外、かつaccuracyが0から始まってたらd.statusをPEにする
+    if (d.status !== 4 && !d.accuracy.startsWith('0')) {
       d.status = PRESENTATIONERROR;
     }
-    dd.push({//dd配列に下記のオブジェクトを格納していく
+    dd.push({
       'key': d.judgeId,
       'problemId': d.problemId,
       'time': d.submissionDate,
       'status': d.status,
       'message': `${d.problemId} ${new Date(d.submissionDate)}`
     })
-    solved(d);//pdbオブジェクトを作っていく
-    if (prevId !== d.problemId) {//前のデータと今のデータのIDが違かったらsubmitをプラスしていく
+    solved(d);
+    if (prevId !== d.problemId) {
       submit += 1;
     }
-    prevId = d.problemId;//prevIdを更新する
+    prevId = d.problemId;
   }
   checkList();
 }
 
 //solved関数
 function solved(d){
-  if (d.problemId in pdb) { //pdbオブジェクトにd.problemIdがあったら、更新していく
+  if (d.problemId in pdb) { 
     const entry = pdb[d.problemId];
     entry.color = colors(d.status, entry.color);
     entry.record = records(d.status, entry.record);
   } else {
-    const entry = { //なかったらentryオブジェクトを定義し、pdbオブジェクトに格納
+    const entry = { 
       problemId: d.problemId,
       color: colors(d.status),
       record: records(d.status),

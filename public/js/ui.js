@@ -36,7 +36,6 @@ const smoothScroll = () =>{
     }
   }
   
-  // 関数実行 -------------------------
   smoothScroll();
 
   function hamburger() {
@@ -46,6 +45,13 @@ const smoothScroll = () =>{
     document.getElementById('nav').classList.toggle('in');
   }
 
-  document.getElementById('hamburger').addEventListener('click' , function () {
-    hamburger();
-  } );
+  function nonav() {
+    document.getElementById('nav').classList.remove('in');  
+  }
+
+  document.getElementById('hamburger').onclick = hamburger;
+  document.getAttribute('href').onclick = nonav;
+
+  
+
+  
