@@ -45,12 +45,8 @@ const smoothScroll = () =>{
     document.getElementById('nav').classList.toggle('in');
   }
 
-  function nonav() {
-    document.getElementById('nav').classList.remove('in');  
-  }
-
   document.getElementById('hamburger').onclick = hamburger;
-  document.getAttribute('href').onclick = nonav;
+  document.getElementById('title').onclick = hamburger;
 
   
 

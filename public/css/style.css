@@ -202,9 +202,10 @@ h2{
     .AOJ nav{
         position: fixed;
         top: 100;
+        bottom: 0;
         left: -40%;
         width: 40%;
-        height: 100vh;
+        height: auto;
         background: #ffffff;
         transition: .7s;
     }
@@ -260,5 +261,26 @@ h2{
     .line_3 {
         transform: translateY(-10px)rotate(45deg);
         bottom: 0;
+    }
+}
+
+@media screen and (max-width: 600px){
+    header h1{
+        font-size: 18px;
+        
+    }
+
+    header p{
+        font-size: 10px;
+    }
+
+    .AOJ nav{
+        left: -70%;
+        width: 70%;
+        overflow-y: auto;
+    }
+    
+    #hamburger {
+        left: 20px;
     }
 }

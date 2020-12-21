@@ -194,9 +194,8 @@ const Problems = [
 const ACCEPTED = 4;
 const PRESENTATIONERROR = 8;
 
-const GREEN = '#72af68';
-const YELLOW = '#f9e169';
-const RED = '#f48876';
+const GREY = '#cccccc';
+const WHITE = '#ffffff';
 
 const StatusIcons = [
   '<img src="images/ce@3x.png">',
@@ -212,13 +211,10 @@ const StatusIcons = [
 ]
 
 function colors(status, prev){
-  if (status === ACCEPTED || prev === GREEN) {
-    return GREEN;
+  if (status === ACCEPTED || prev === GREY) {
+    return GREY;
   }
-  if (status === PRESENTATIONERROR || prev === YELLOW) {
-    return YELLOW;
-  }
-  return RED;
+  return WHITE;
 }
 
 function records (status, prev= '') {
